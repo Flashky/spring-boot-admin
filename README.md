@@ -35,11 +35,16 @@ Considerations:
 
 #### Log rotation
 
-Add the following properties (it will keep only one backup):
+By default, log file will be rotated after reaching 10MB of size, and no backup files will be generated.
 
-```properties
-logging.file.max-size: 10MB
-logging.file.total-size-cap: 10MB
+To customize this behaviour, add the following properties:
+
+```yml
+logging:
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      total-size-cap: 70MB
 ```
 
 
