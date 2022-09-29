@@ -30,7 +30,7 @@ management.endpoint.logfile.external-file=logs/client.log
 ```
 
 Considerations:
-- When using ``application.yml`` use double quotes for ``loggin.pattern.file`` value.
+- When using ``application.yml`` use double quotes for ``logging.pattern.file`` value.
 - ``management.endpoints.web.exposure.include`` must have ``loggers`` and ``logfile`` values included.
 
 #### Log rotation
