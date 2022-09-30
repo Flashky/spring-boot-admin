@@ -13,5 +13,5 @@ spring:
           message: "#{event.statusInfo.status == 'UP' ? '🟢' : '🔴' } ```#{instance.registration.name}``` is *#{event.statusInfo.status}*"
   security:
     user:
-      name: ${ADMIN_USERNAME:admin}
-      password: ${ADMIN_PASSWORD:admin}
+      name: ${ADMIN_SERVER_USERNAME:admin}
+      password: ${ADMIN_SERVER_PASSWORD:admin}
