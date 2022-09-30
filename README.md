@@ -14,24 +14,49 @@ Property | Description | Default value
 
 The minimum configuration requires just adding the following properties at ``application.properties`` or ``application.yml``:
 
-```properties
-spring.boot.admin.client.url=http://localhost:9090
-management.endpoints.web.exposure.include=httptrace,loggers,logfile,health,info,metrics
+```yml
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 ```
+
+Exposure should not use ``*`` in a production environment. Please refer to [official endpoints documentation](https://docs.spring.io/spring-boot/docs/2.7.4/reference/html/actuator.html#actuator.endpoints) to select the ones you need.
+
+Some useful ones are:
+- health
+- info
+- metrics
+- loggers
+- logfile
+- env
 
 ### Logging
 
 Add the following properties to enable displaying logs at Spring Boot Admin Server:
 
-```properties
-logging.file.name=logs/client.log
-logging.pattern.file=%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx
-management.endpoint.logfile.external-file=logs/client.log
+```yml
+logging:
+  file:
+    name: logs/client.log
+  pattern:
+    file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+management:
+  endpoint:
+    logfile:
+      external-file: logs/client.log
+  endpoints:
+    web:
+      exposure:
+        include: loggers,logfile
 ```
 
-Considerations:
-- When using ``application.yml`` use double quotes for ``logging.pattern.file`` value.
-- ``management.endpoints.web.exposure.include`` must have ``loggers`` and ``logfile`` values included.
 
 #### Log rotation
 
@@ -47,4 +72,37 @@ logging:
       total-size-cap: 70MB
 ```
 
+## Full sample application.yml
 
+```yml
+spring:
+  application:
+    name: my-app
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
+
+# Logging configuration
+logging:
+  file:
+    name: logs/client.log
+  pattern:
+    file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      total-size-cap: 70MB
+      
+# Spring Boot Admin Client configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env,loggers,logfile
+  endpoint:
+    logfile:
+      external-file: logs/client.log
+
+
+```
