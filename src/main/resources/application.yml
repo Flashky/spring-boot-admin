@@ -10,3 +10,7 @@ spring:
           chat-id: ${TELEGRAM_CHAT_ID:CHAT_ID}
           parse_mode: Markdown
           message: "#{event.statusInfo.status == 'UP' ? '🟢' : '🔴' }  ```#{instance.registration.name}``` is *#{event.statusInfo.status}*"
+
+# TODO add the following properties with placeholders after finished building:
+#spring.security.user.name=username
+#spring.security.user.password=password
