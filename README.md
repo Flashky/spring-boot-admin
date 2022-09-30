@@ -9,17 +9,29 @@ Property | Description | Default value
 --|--|--
 ``TELEGRAM_BOT_TOKEN`` | The Telegram Bot token provided by [@BotFather](https://t.me/botfather) | None
 ``TELEGRAM_CHAT_ID`` | The Telegram chat id to send the notifications to | None
+``ADMIN_SERVER_USERNAME`` | Username to login at the admin server | ``admin`` **(*)**
+``ADMIN_SERVER_PASSWORD`` | Password to login at the admin server | ``admin`` **(*)**
+
+***:** *It is highly recommended to change both default username and password.*
 
 ## Client side configuration
 
 The minimum configuration requires just adding the following properties at ``application.properties`` or ``application.yml``:
 
 ```yml
-spring:
+spring
+  security:
+    user:
+      name: ${ADMIN_SERVER_USERNAME}
+      password: ${ADMIN_SERVER_PASSWORD}
   boot:
     admin:
       client:
         url: http://localhost:9090
+        username: ${spring.security.user.name}
+        password: ${spring.security.user.password}
+        instance:
+          service-host-type: HOST_NAME
 management:
   endpoints:
     web:
@@ -27,7 +39,11 @@ management:
         include: "*"
 ```
 
-Exposure should not use ``*`` in a production environment. Please refer to [official endpoints documentation](https://docs.spring.io/spring-boot/docs/2.7.4/reference/html/actuator.html#actuator.endpoints) to select the ones you need.
+Therefore, setting up the following properties at the client:
+- ``ADMIN_SERVER_USERNAME``: Username to login at the admin server.
+- ``ADMIN_SERVER_PASSWORD``: Password to login at the admin server.
+
+The value for management includes should not use ``*`` in a production environment. Please refer to [official endpoints documentation](https://docs.spring.io/spring-boot/docs/2.7.4/reference/html/actuator.html#actuator.endpoints) to select the ones you need.
 
 Some useful ones are:
 - health
@@ -78,10 +94,18 @@ logging:
 spring:
   application:
     name: my-app
+  security:
+    user:
+      name: ${ADMIN_SERVER_USERNAME}
+      password: ${ADMIN_SERVER_PASSWORD}
   boot:
     admin:
       client:
         url: http://localhost:9090
+        username: ${spring.security.user.name}
+        password: ${spring.security.user.password}
+        instance:
+          service-host-type: HOST_NAME
 
 # Logging configuration
 logging:
