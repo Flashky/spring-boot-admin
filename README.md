@@ -31,7 +31,7 @@ spring
         username: ${spring.security.user.name}
         password: ${spring.security.user.password}
         instance:
-          service-host-type: HOST_NAME
+          service-host-type: IP
 management:
   endpoints:
     web:
@@ -105,7 +105,7 @@ spring:
         username: ${spring.security.user.name}
         password: ${spring.security.user.password}
         instance:
-          service-host-type: HOST_NAME
+          service-host-type: IP
 
 # Logging configuration
 logging:
