@@ -9,7 +9,8 @@ spring:
           auth-token: ${TELEGRAM_BOT_TOKEN:TOKEN}
           chat-id: ${TELEGRAM_CHAT_ID:CHAT_ID}
           parse_mode: Markdown
-          message: "#{event.statusInfo.status == 'UP' ? '🟢' : '🔴' }  ```#{instance.registration.name}``` is *#{event.statusInfo.status}*"
+          ignore-changes: ""
+          message: "#{event.statusInfo.status == 'UP' ? '🟢' : '🔴' } ```#{instance.registration.name}``` is *#{event.statusInfo.status}*"
   security:
     user:
       name: ${ADMIN_USERNAME:admin}
