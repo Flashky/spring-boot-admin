@@ -192,6 +192,28 @@ management:
     logfile:
       external-file: logs/client.log
 ```
+#### Enabling environment variables manager
+
+
+Add the following dependency:
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter</artifactId>
+    <version>3.1.4</version>
+</dependency>
+```
+
+Finally, add the following property:
+
+```yml
+management:
+  endpoint:
+    env:
+      post:
+        enabled: true
+```
 
 #### Other advanced configurations
 
