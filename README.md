@@ -66,7 +66,7 @@ And finally, the following dependency management:
 The minimum configuration requires just adding the following properties at ``application.yml``:
 
 ```yml
-spring
+spring:
   security:
     user:
       name: ${ADMIN_SERVER_USERNAME}
