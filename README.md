@@ -16,7 +16,31 @@ Property | Description | Default value
 
 ## Client side configuration
 
-The minimum configuration requires just adding the following properties at ``application.properties`` or ``application.yml``:
+### Dependencies
+
+#### Basic pom configuration
+
+The minimum configuration requires adding the following dependencies at ``pom.xml``:
+
+```xml
+<dependency>
+	<groupId>de.codecentric</groupId>
+	<artifactId>spring-boot-admin-starter-client</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+#### Advanced pom configurations
+
+- [Show Version in Application List](https://codecentric.github.io/spring-boot-admin/current/#show-version-in-application-list)
+
+### Properties
+
+#### Basic properties configuration
+
+The minimum configuration requires just adding the following properties at ``application.yml``:
 
 ```yml
 spring
@@ -53,7 +77,9 @@ Some useful ones are:
 - logfile
 - env
 
-### Logging
+#### Advanced properties configurations
+
+##### Logging
 
 Add the following properties to enable displaying logs at Spring Boot Admin Server:
 
@@ -74,7 +100,7 @@ management:
 ```
 
 
-#### Log rotation
+##### Log rotation
 
 By default, log file will be rotated after reaching 10MB of size, and no backup files will be generated.
 
@@ -88,7 +114,7 @@ logging:
       total-size-cap: 70MB
 ```
 
-## Full sample application.yml
+##### Full sample application.yml
 
 ```yml
 spring:
