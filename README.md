@@ -20,17 +20,45 @@ Property | Description | Default value
 
 #### Dependencies
 
-The minimum configuration requires adding the following dependencies at ``pom.xml``:
+The minimum configuration requires adding the following to the ``pom.xml``:
+
+Properties:
 
 ```xml
-<dependency>
-	<groupId>de.codecentric</groupId>
-	<artifactId>spring-boot-admin-starter-client</artifactId>
-</dependency>
-<dependency>
-	<groupId>org.springframework.boot</groupId>
-	<artifactId>spring-boot-starter-web</artifactId>
-</dependency>
+<properties>
+	<spring-boot-admin.version>2.7.4</spring-boot-admin.version>
+</properties>
+```
+
+Dependencies:
+
+```xml
+<dependencies>
+	<dependency>
+		<groupId>de.codecentric</groupId>
+		<artifactId>spring-boot-admin-starter-client</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+</dependencies>
+```
+
+And finally, the following dependency management:
+
+```xml
+<dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-dependencies</artifactId>
+			<version>${spring-boot-admin.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+	</dependencies>
+</dependencyManagement>
 ```
 
 #### Properties
