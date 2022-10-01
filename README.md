@@ -107,7 +107,7 @@ Some useful ones are:
 
 Add the following properties:
 
-```properties
+```yml
 management:
   endpoint:
     health:
