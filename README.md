@@ -69,12 +69,12 @@ The minimum configuration requires just adding the following properties at ``app
 spring:
   security:
     user:
-      name: ${ADMIN_SERVER_USERNAME}
-      password: ${ADMIN_SERVER_PASSWORD}
+      name: ${ADMIN_SERVER_USERNAME:admin}
+      password: ${ADMIN_SERVER_PASSWORD:admin}
   boot:
     admin:
       client:
-        url: http://localhost:9090
+        url: ${ADMIN_SERVER_URL:http://localhost:9090}
         username: ${spring.security.user.name}
         password: ${spring.security.user.password}
         instance:
@@ -93,12 +93,13 @@ Therefore, setting up the following properties at the client:
 The value for management includes should not use ``*`` in a production environment. Please refer to [official endpoints documentation](https://docs.spring.io/spring-boot/docs/2.7.4/reference/html/actuator.html#actuator.endpoints) to select the ones you need.
 
 Some useful ones are:
-- health
-- info
-- metrics
-- loggers
-- logfile
-- env
+- ``health``
+- ``info``
+- ``metrics``
+- ``loggers``
+- ``logfile``
+- ``env``
+- ``scheduledtasks``
 
 
 ### Advanced configurations
