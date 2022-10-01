@@ -103,6 +103,17 @@ Some useful ones are:
 
 ### Advanced configurations
 
+#### Additional Health information
+
+Add the following properties:
+
+```properties
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+```
+
 #### Logging
 
 Add the following properties to enable displaying logs at Spring Boot Admin Server:
@@ -175,6 +186,8 @@ management:
       exposure:
         include: health,info,metrics,env,loggers,logfile
   endpoint:
+    health:
+      show-details: ALWAYS
     logfile:
       external-file: logs/client.log
 ```
