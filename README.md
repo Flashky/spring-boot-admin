@@ -1,4 +1,7 @@
 # spring-boot-admin
+[![Build & Report](https://github.com/Flashky/spring-boot-admin/actions/workflows/build-report.yml/badge.svg)](https://github.com/Flashky/spring-boot-admin/actions/workflows/build-report.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2282b8bcc96e4dc39d45a75a6aae7d54)](https://www.codacy.com/gh/Flashky/spring-boot-admin/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Flashky/spring-boot-admin&amp;utm_campaign=Badge_Grade)
+
 Customized Spring Boot Admin server for personal purposes
 
 ## Configuration properties
