@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.flashk.cloud</groupId>
 	<artifactId>spring-boot-admin</artifactId>
-	<version>0.2.0</version>
+	<version>0.3.0-SNAPSHOT</version>
 	<name>spring-boot-admin</name>
 	<description>Admin server for RSS Tracker Bot</description>
 	<properties>
